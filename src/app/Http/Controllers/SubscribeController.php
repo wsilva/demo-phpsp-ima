@@ -9,11 +9,16 @@ use App\Http\Requests;
 
 use App\Email;
 
+use Session;
+
+use Cache;
+
 class SubscribeController extends Controller
 {
     public function index()
     {
-        $qtdeSubscribed = Email::count();
+        // $qtdeSubscribed = Email::count();
+        $qtdeSubscribed = (int) Cache::get('qtdeSubscribed');
 
         $data = [
             'ipaddr'=> $_SERVER['SERVER_ADDR'], 
@@ -28,7 +33,8 @@ class SubscribeController extends Controller
     {
         $input = Request::all();
         Email::create($input);
-        \Session::flash('flash_message', 'Em breve você receberá nosso muito obrigado.' );
+        Cache::increment('qtdeSubscribed');
+        Session::flash('flash_message', 'Em breve você receberá nosso muito obrigado.' );
         return redirect('/');
     }
 }
