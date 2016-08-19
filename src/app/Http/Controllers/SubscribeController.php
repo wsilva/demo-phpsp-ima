@@ -28,6 +28,7 @@ class SubscribeController extends Controller
     {
         $input = Request::all();
         Email::create($input);
+        \Session::flash('flash_message', 'Em breve você receberá nosso muito obrigado.' );
         return redirect('/');
     }
 }

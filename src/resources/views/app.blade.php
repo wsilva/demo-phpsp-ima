@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title')</title>
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap.min.css">
 </head>
 <body>
     <div class="container">
@@ -17,5 +17,7 @@
             </div>
         </div>
     </footer>
+    <script type="text/javascript" src="/assets/jquery.js"></script>
+    <script type="text/javascript" src="/assets/bootstrap.min.js"></script>
 </body>
-</html>
+</html> 

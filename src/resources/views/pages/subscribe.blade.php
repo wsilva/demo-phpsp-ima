@@ -29,6 +29,12 @@ Subscribe
 {!! Form::open() !!}
 <div class="container">
     <div class="col-md-6 col-md-offset-3">
+        @if (Session::has('flash_message'))
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ Session::get('flash_message') }}
+            </div>
+        @endif
         
         <div class="form-group">
             {!! Form::label('email', 'Cadastre-se você também:') !!}    
