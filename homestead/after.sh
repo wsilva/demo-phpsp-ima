@@ -4,6 +4,10 @@
 # add any commands you wish to this file and they will
 # be run after the Homestead machine is provisioned.
 
+## workaround on redis to bind external access
+sudo sed -i "s/bind 127.0.0.1/bind 0.0.0.0/g" /etc/redis/redis.conf
+sudo service redis-server restart
+
 ## rabbitmq installation
 echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
 wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
