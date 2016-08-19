@@ -1,0 +1,41 @@
+---
+ip: "5.5.5.5"
+memory: 4096
+cpus: 2
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/Projects/demo-phpsp-ima
+      to: /home/vagrant/demo-phpsp-ima
+      type: "nfs"
+
+sites:
+    - map: phpsp-ima.dev
+      to: /home/vagrant/demo-phpsp-ima/src/public
+
+databases:
+    - phpsp-ima
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp
+
+ports:
+    - send: 15672
+      to: 15672
+    - send: 5672
+      to: 5672
