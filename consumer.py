@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import pika, json
+import pika, json, time
 
-credentials = pika.PlainCredentials('guest', 'guest')
+print(' [*] Subindo consumer')
+time.sleep(10)
+
+print(' [*] Tentando conectar no rabbitmq')
+credentials = pika.PlainCredentials('user', 'pass')
 parameters = pika.ConnectionParameters('queue', 5672, '/', credentials)
 connection = pika.BlockingConnection(parameters)
 channel = connection.channel()
@@ -17,5 +21,4 @@ def callback(ch, method, properties, body):
 channel.basic_consume(callback, queue='phpspima', no_ack=True)
 
 print(' [*] De pé e aguardando mensagens. CTRL+C para finalizar')
-
 channel.start_consuming()
