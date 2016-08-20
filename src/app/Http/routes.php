@@ -11,6 +11,8 @@
 |
 */
 
+URL::forceRootUrl(Config::get('app.url'));
+
 Route::get('/', 'SubscribeController@index');
 Route::post('/', 'SubscribeController@subscribed');
 
