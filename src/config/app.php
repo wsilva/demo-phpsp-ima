@@ -153,6 +153,10 @@ return [
 
         Illuminate\Html\HtmlServiceProvider::class,
 
+        VladimirYuldashev\LaravelQueueRabbitMQ\LaravelQueueRabbitMQServiceProvider::class,
+
+
+
         /*
          * Application Service Providers...
          */

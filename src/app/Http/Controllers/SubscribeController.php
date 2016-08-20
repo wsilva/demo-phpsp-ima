@@ -13,6 +13,8 @@ use Session;
 
 use Cache;
 
+use Queue;
+
 class SubscribeController extends Controller
 {
     public function index()
@@ -34,6 +36,11 @@ class SubscribeController extends Controller
         $input = Request::all();
         Email::create($input);
         Cache::increment('qtdeSubscribed');
+
+        $novoEmail = $input['email'];
+        $data = ['novo-email' => $novoEmail];
+        Queue::push('SendSubscribedEmails', $data);
+
         Session::flash('flash_message', 'Em breve você receberá nosso muito obrigado.' );
         return redirect('/');
     }
