@@ -24,3 +24,6 @@ echo "extension=/etc/phpredis/modules/redis.so" | sudo tee /etc/php/7.0/fpm/conf
 echo "extension=/etc/phpredis/modules/redis.so" | sudo tee /etc/php/7.0/cli/conf.d/redis.ini
 sudo service php7.0-fpm restart
 sudo service nginx restart
+
+## python queue consumer
+pip install pika
